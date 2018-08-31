@@ -270,7 +270,7 @@ build() {
     pwd -W
     dir
     ls -d -- */
-    BRANCH=$(echo  $(git symbolic-ref --short -q HEAD))
+    BRANCH=$APPVEYOR_REPO_BRANCH
     echo "branch=   " $BRANCH
     ver=$(git describe --tags --always)
     echo "version=  " $ver
@@ -280,6 +280,7 @@ build() {
     #RawTherapee cache location
     CACHE="5-DEV"
     PROC=$(echo $(getconf _NPROCESSORS_ONLN 2>/dev/null || getconf NPROCESSORS_ONLN 2>/dev/null || echo 1))
+    echo $PROC 
     #CMAKE release
     mkdir $BUILD
     pushd $BUILD
