@@ -160,9 +160,10 @@ seed_mingw_src_rawtherapee_repo() {
 #    git clone --local --no-hardlinks --bare "$TOPDIR" "$repo"
 #    pushd "$repo"
     pushd $APPVEYOR_BUILD_FOLDER
-    git remote remove origin
-    git remote add origin https://github.com/gaaned92/rawtherapee.git
-    git fetch origin
+#    git remote remove origin
+#    git remote add origin https://github.com/gaaned92/rawtherapee.git
+#    git fetch origin
+     git clone --no-checkout https://github.com/gaaned92/rawtherapee.git
     popd
     logok "Seeded $repo" 
 }
@@ -287,14 +288,14 @@ build() {
 
     cmake -G "MSYS Makefiles" \
         -DCMAKE_BUILD_TYPE="release"  \
-        -DCMAKE_CXX_FLAGS=$CXX_FLAGS\
-        -DCMAKE_C_FLAGS=$CXX_FLAGS\
-        -DCMAKE_EXE_LINKER_FLAGS=$LINKER_FLAGS\
+        -DCMAKE_CXX_FLAGS=$CXX_FLAGS \
+        -DCMAKE_C_FLAGS=$CXX_FLAGS \
+        -DCMAKE_EXE_LINKER_FLAGS=$LINKER_FLAGS \
         -DCACHE_NAME_SUFFIX="5-dev" \
         -DPROC_TARGET_NUMBER="1" \
         -DBUNDLE_BASE_INSTALL_DIR=$INSTALL\
-        -DOPTION_OMP="ON"\ 
-        -DWITH_MYFILE_MMAP="ON"\
+        -DOPTION_OMP="ON" \ 
+        -DWITH_MYFILE_MMAP="ON" \
         -DWITH_LTO="OFF" \
         -DWITH_PROF="OFF" \
         -DWITH_SAN="OFF" \
