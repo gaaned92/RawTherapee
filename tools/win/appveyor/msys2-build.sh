@@ -286,16 +286,11 @@ build() {
     CXX_FLAGS="-m64 -mwin32 -mfpmath=sse -mthreads -Wno-aggressive-loop-optimizations -Wno-parentheses  -O3 "
     LINKER_FLAGS="-m64  -mthreads  -static-libgcc -s  -O3  -fno-use-linker-plugin"
 
-    cmake -G "MSYS Makefiles" \
-        -DCMAKE_BUILD_TYPE="release"  \
-        -DCMAKE_CXX_FLAGS=$CXX_FLAGS \
-        -DCMAKE_C_FLAGS=$CXX_FLAGS \
-        -DCMAKE_EXE_LINKER_FLAGS=$LINKER_FLAGS \
+    cmake -G "MSYS Makefiles"  -DCMAKE_BUILD_TYPE="release"  -DCMAKE_CXX_FLAGS=$CXX_FLAGS -DCMAKE_C_FLAGS=$CXX_FLAGS  -DCMAKE_EXE_LINKER_FLAGS=$LINKER_FLAGS \
         -DCACHE_NAME_SUFFIX="5-dev" \
         -DPROC_TARGET_NUMBER="1" \
-        -DBUNDLE_BASE_INSTALL_DIR=$INSTALL\
-        -DOPTION_OMP="ON" \ 
-        -DWITH_MYFILE_MMAP="ON" \
+        -DBUNDLE_BASE_INSTALL_DIR=$INSTALL \
+        -DOPTION_OMP="ON" -DWITH_MYFILE_MMAP="ON" \
         -DWITH_LTO="OFF" \
         -DWITH_PROF="OFF" \
         -DWITH_SAN="OFF" \
