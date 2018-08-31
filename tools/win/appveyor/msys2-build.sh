@@ -341,7 +341,7 @@ run_tests() {
 case "$1" in
     installdeps)
          loginfo " installdeps empty"
-#        install_dependencies
+         install_dependencies
 #        update_mingw_src
 #        build_pkg "libmypaint-git" true
         ;;
